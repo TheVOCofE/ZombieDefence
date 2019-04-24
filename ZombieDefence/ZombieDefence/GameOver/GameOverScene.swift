@@ -21,7 +21,25 @@ class GameOverScene: SKScene {
         scoreLabel.text = "\(score)"
         
         newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
-        newGameButtonNode.texture = SKTexture(imageNamed: "newGameButton")
+        newGameButtonNode.texture = SKTexture(imageNamed: "NewGameButton")
+        
+        //scoreLabel = SKLabelNode(text: "Score: 0")
+        //scoreLabel.position = CGPoint(x: anchorPoint.x+300, y: anchorPoint.y+100)
+//        scoreLabel.fontName = "AmericanTypewriter-Bold"
+//        scoreLabel.fontSize = 36
+//        scoreLabel.fontColor = UIColor.white
+//        score = 0
+//
+//        self.addChild(scoreLabel)
+//
+//        newGameButtonNode = SKSpriteNode(imageNamed: "NewGameButton")
+//        newGameButtonNode.position = CGPoint(x: anchorPoint.x+300, y: anchorPoint.y+600)
+        //newGameButtonNode.fontName = "AmericanTypewriter-Bold"
+        //newGameButtonNode.fontSize = 36
+        //newGameButtonNode.fontColor = UIColor.white
+        //score = 0
+        
+        //self.addChild(newGameButtonNode)
         
     }
     
@@ -32,7 +50,8 @@ class GameOverScene: SKScene {
             
             if node[0].name == "newGameButton"{
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
-                let gameScene = GameScene(size: self.size)
+                let newSize = CGSize(width: 750, height: 1334);
+                let gameScene = GameScene(size: newSize)
                 self.view!.presentScene(gameScene, transition: transition)
             }
         }
