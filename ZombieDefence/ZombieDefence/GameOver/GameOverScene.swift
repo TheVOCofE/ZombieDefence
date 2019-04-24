@@ -15,32 +15,17 @@ class GameOverScene: SKScene {
     
     var scoreLabel:SKLabelNode!
     var newGameButtonNode:SKSpriteNode!
+    var scrollingBackground:SKEmitterNode!
     
     override func didMove(to view: SKView) {
+        //get nodes from scene
         scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
         scoreLabel.text = "\(score)"
         
         newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
         newGameButtonNode.texture = SKTexture(imageNamed: "NewGameButton")
-        
-        //scoreLabel = SKLabelNode(text: "Score: 0")
-        //scoreLabel.position = CGPoint(x: anchorPoint.x+300, y: anchorPoint.y+100)
-//        scoreLabel.fontName = "AmericanTypewriter-Bold"
-//        scoreLabel.fontSize = 36
-//        scoreLabel.fontColor = UIColor.white
-//        score = 0
-//
-//        self.addChild(scoreLabel)
-//
-//        newGameButtonNode = SKSpriteNode(imageNamed: "NewGameButton")
-//        newGameButtonNode.position = CGPoint(x: anchorPoint.x+300, y: anchorPoint.y+600)
-        //newGameButtonNode.fontName = "AmericanTypewriter-Bold"
-        //newGameButtonNode.fontSize = 36
-        //newGameButtonNode.fontColor = UIColor.white
-        //score = 0
-        
-        //self.addChild(newGameButtonNode)
-        
+        scrollingBackground = self.childNode(withName: "scrollingBackground") as! SKEmitterNode
+        scrollingBackground.advanceSimulationTime(10)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

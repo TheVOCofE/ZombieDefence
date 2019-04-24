@@ -12,7 +12,7 @@ import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var starfield:SKEmitterNode!
+    var scrollingBackground:SKEmitterNode!
     var player:SKSpriteNode!
     var leftMove:SKSpriteNode!
     var sandbags:SKSpriteNode!
@@ -44,12 +44,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        starfield = SKEmitterNode(fileNamed: "Starfield")
-        starfield.position = CGPoint(x: 0, y: 1472)
-        starfield.advanceSimulationTime(20)
-        self.addChild(starfield)
+        scrollingBackground = SKEmitterNode(fileNamed: "Starfield")
+        scrollingBackground.position = CGPoint(x: 0, y: 1472)
+        scrollingBackground.advanceSimulationTime(20)
+        self.addChild(scrollingBackground)
         
-        starfield.zPosition = -1
+        scrollingBackground.zPosition = -1
         
         player = SKSpriteNode(imageNamed: "player")
         
@@ -149,11 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if self.livesArray.count == 0{
                     let transition = SKTransition.flipHorizontal(withDuration: 0.5)
-                    //let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
                     let gameOverScene = GameOverScene(fileNamed: "GameOverScene") as! SKScene
-                    //let newSize = CGSize(width: 750, height: 1334);
-                    //let scoretest = self.score
-                    //let gameOver = GameOverScene(size: newSize)
                     let gameOver = gameOverScene as! GameOverScene
                     gameOver.score = self.score
                     self.view?.presentScene(gameOver, transition: transition)
@@ -192,60 +188,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         actionArray.append(SKAction.move(to: CGPoint(x: position, y: -survivor.size.height-200), duration: animationDuration))
         actionArray.append(SKAction.run {
-            self.run(SKAction.playSoundFileNamed("hit.mp3", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("hit.mp3", waitForCompletion: false))
 
-//
-      
-            })
+        })
         actionArray.append(SKAction.removeFromParent())
-        //
+        
         survivor.run(SKAction.sequence(actionArray))
     }
     
     
-    
-//    func fireBullet() {
-//        self.run(SKAction.playSoundFileNamed("gunSound.mp3", waitForCompletion: false))
-//
-//        let bulletNode = SKSpriteNode(imageNamed: "bulet_3")
-//        bulletNode.position = player.position
-//        bulletNode.position.y += 5
-//
-//        bulletNode.physicsBody = SKPhysicsBody(circleOfRadius: bulletNode.size.width / 2)
-//        bulletNode.physicsBody?.isDynamic = true
-//
-//        bulletNode.physicsBody?.categoryBitMask = bulletCategory
-//        bulletNode.physicsBody?.contactTestBitMask = zombieCategory
-//        bulletNode.physicsBody?.collisionBitMask = 0
-//        bulletNode.physicsBody?.usesPreciseCollisionDetection = true
-//
-//        self.addChild(bulletNode)
-//
-//        let animationDuration:TimeInterval = 0.3
-//
-//
-//        var actionArray = [SKAction]()
-//
-//        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x, y: self.frame.size.height + 10), duration: animationDuration))
-//        actionArray.append(SKAction.removeFromParent())
-//
-//        bulletNode.run(SKAction.sequence(actionArray))
-//
-//    }
-    
+ 
+ //fire bullet based on point touched
     func fireBullet(position: CGPoint) {
         self.run(SKAction.playSoundFileNamed("gunSound.mp3", waitForCompletion: false))
-        //var dir:CGPoint
-        //var dirx:Float = Float(position.x - player.position.x)
-        //var diry:Float = Float(position.y - player.position.y)
-        
-        //let normal = simd_normalize(simd_float2(x: dirx, y: diry))
-        
+
         let bulletNode = SKSpriteNode(imageNamed: "bulet_3")
         bulletNode.position = player.position
         bulletNode.position.y += 5
-        //bulletNode.position.y += CGFloat(normal.y)
-        //bulletNode.position.y += CGFloat(normal.x)
         
         bulletNode.physicsBody = SKPhysicsBody(circleOfRadius: bulletNode.size.width / 2)
         bulletNode.physicsBody?.isDynamic = true
@@ -331,8 +290,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.wait(forDuration: 2)) {
             explosion.removeFromParent()
         }
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

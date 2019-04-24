@@ -11,6 +11,7 @@
 		1A36E14D2268EDA20006A834 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A36E14C2268EDA20006A834 /* MenuScene.swift */; };
 		1A3F4AB82270BCF30007AE06 /* gunSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F4AB62270BCF30007AE06 /* gunSound.mp3 */; };
 		1A3F4AB92270BCF30007AE06 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F4AB72270BCF30007AE06 /* explosion.mp3 */; };
+		1A3F4ABB2270FC710007AE06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F4ABA2270FC710007AE06 /* GoogleService-Info.plist */; };
 		1ACA5DA1226140B0000D55EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA5DA0226140B0000D55EB /* AppDelegate.swift */; };
 		1ACA5DA3226140B0000D55EB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DA2226140B0000D55EB /* GameScene.sks */; };
 		1ACA5DA5226140B0000D55EB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DA4226140B0000D55EB /* Actions.sks */; };
@@ -20,7 +21,6 @@
 		1ACA5DAE226140B1000D55EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DAD226140B1000D55EB /* Assets.xcassets */; };
 		1ACA5DB1226140B1000D55EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DAF226140B1000D55EB /* LaunchScreen.storyboard */; };
 		1ACA5DBA226140ED000D55EB /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DB8226140ED000D55EB /* Starfield.sks */; };
-		1ACA5DBB226140ED000D55EB /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DB9226140ED000D55EB /* torpedo.mp3 */; };
 		1ACA5DBF226140F6000D55EB /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA5DBD226140F6000D55EB /* Explosion.sks */; };
 		1AF05768226FE06C00F98E79 /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1AF05767226FE06C00F98E79 /* hit.mp3 */; };
 		1AF0576A226FE16700F98E79 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1AF05769226FE16700F98E79 /* GameOverScene.sks */; };
@@ -33,6 +33,7 @@
 		1A36E14C2268EDA20006A834 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		1A3F4AB62270BCF30007AE06 /* gunSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gunSound.mp3; sourceTree = "<group>"; };
 		1A3F4AB72270BCF30007AE06 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = explosion.mp3; path = ../../../../../Desktop/ZombieFiles/explosion.mp3; sourceTree = "<group>"; };
+		1A3F4ABA2270FC710007AE06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1ACA5D9D226140B0000D55EB /* ZombieDefence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieDefence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACA5DA0226140B0000D55EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ACA5DA2226140B0000D55EB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		1ACA5DB0226140B1000D55EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1ACA5DB2226140B1000D55EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ACA5DB8226140ED000D55EB /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
-		1ACA5DB9226140ED000D55EB /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		1ACA5DBD226140F6000D55EB /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		1AF05767226FE06C00F98E79 /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
 		1AF05769226FE16700F98E79 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 				1A3F4AB72270BCF30007AE06 /* explosion.mp3 */,
 				1A3F4AB62270BCF30007AE06 /* gunSound.mp3 */,
 				1AF05767226FE06C00F98E79 /* hit.mp3 */,
-				1ACA5DB9226140ED000D55EB /* torpedo.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -118,6 +117,7 @@
 				1ACA5DAA226140B0000D55EB /* Main.storyboard */,
 				1ACA5DAD226140B1000D55EB /* Assets.xcassets */,
 				1A36E1482268ED420006A834 /* ZombieDefence-Bridging-Header.h */,
+				1A3F4ABA2270FC710007AE06 /* GoogleService-Info.plist */,
 				1AF05766226FD90C00F98E79 /* Menu */,
 				1A36E1432268EA3D0006A834 /* Game */,
 				1A36E1452268EABD0006A834 /* Sounds */,
@@ -204,7 +204,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ACA5DBB226140ED000D55EB /* torpedo.mp3 in Resources */,
 				1ACA5DBA226140ED000D55EB /* Starfield.sks in Resources */,
 				1ACA5DAC226140B0000D55EB /* Main.storyboard in Resources */,
 				1A36E1472268EB5F0006A834 /* MenuScene.sks in Resources */,
@@ -217,6 +216,7 @@
 				1ACA5DA5226140B0000D55EB /* Actions.sks in Resources */,
 				1ACA5DBF226140F6000D55EB /* Explosion.sks in Resources */,
 				1A3F4AB92270BCF30007AE06 /* explosion.mp3 in Resources */,
+				1A3F4ABB2270FC710007AE06 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

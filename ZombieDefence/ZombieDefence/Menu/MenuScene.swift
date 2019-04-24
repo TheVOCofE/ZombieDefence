@@ -9,21 +9,19 @@
 import SpriteKit
 
 class MenuScene: SKScene {
-    var starfield:SKEmitterNode!
+    var scrollingBackground:SKEmitterNode!
     
     var newGameButtonNode:SKSpriteNode!
     var difficultyButtonNode:SKSpriteNode!
     var difficultyLabelNode:SKLabelNode!
     
     override func didMove(to view: SKView){
-       starfield = self.childNode(withName: "starfield") as! SKEmitterNode
-       starfield.advanceSimulationTime(30)
+       scrollingBackground = self.childNode(withName: "scrollingBackground") as! SKEmitterNode
+       scrollingBackground.advanceSimulationTime(30)
         
         newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
         
         difficultyButtonNode = self.childNode(withName: "difficultyButton") as! SKSpriteNode
-        
-        //difficultyButtonNode.texture = SKTexture(imageNamed: "difficultyButton")
         
         difficultyLabelNode = self.childNode(withName: "difficultyLabel") as! SKLabelNode
         
