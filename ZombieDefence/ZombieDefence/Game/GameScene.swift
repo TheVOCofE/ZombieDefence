@@ -30,7 +30,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let zombieCategory:UInt32 = 0x1 << 1
     let bulletCategory:UInt32 = 0x1 << 0
     
+    var livesArray:[SKSpriteNode]!
+    
     override func didMove(to view: SKView) {
+        addLives()
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
@@ -69,8 +72,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(scoreLabel)
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addZombie), userInfo: nil, repeats: true)
+        var timeInterval = 0.75
         
+        if UserDefaults.standard.bool(forKey: "hard"){
+            timeInterval = 0.3
+        }
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(addZombie), userInfo: nil, repeats: true)
+        
+    }
+    
+    func addLives(){
+        livesArray = [SKSpriteNode]()
+        
+        for live in 1 ... 3 {
+            let liveNode = SKSpriteNode(imageNamed: "shuttle")
+            liveNode.position = CGPoint(x: self.anchorPoint.x-200 - CGFloat(4-live)*liveNode.size.width, y: self.anchorPoint.y+600)
+            self.addChild(liveNode)
+            livesArray.append(liveNode)
+        }
     }
     
     @objc func addZombie () {
@@ -99,8 +119,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var actionArray = [SKAction]()
         
-        
         actionArray.append(SKAction.move(to: CGPoint(x: position, y: -zombie.size.height), duration: animationDuration))
+        actionArray.append(SKAction.run {
+            self.run(SKAction.playSoundFileNamed("hit.mp3", waitForCompletion: false))
+            
+            if self.livesArray.count > 0 {
+                let liveNode = self.livesArray.first
+                liveNode!.removeFromParent()
+                self.livesArray.removeFirst()
+                
+                if self.livesArray.count == 0{
+                    let transition = SKTransition.flipHorizontal(withDuration: 0.5)
+                    //let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+                    //let gameOverScene = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+                    let newSize = CGSize(width: 750, height: 1334);
+                    let scoretest = self.score
+                    let gameOverScene = GameScene(size: newSize)
+                    gameOverScene.score = self.score
+                    self.view?.presentScene(gameOverScene, transition: transition)
+                }
+            }
+        })
         actionArray.append(SKAction.removeFromParent())
         
         zombie.run(SKAction.sequence(actionArray))
@@ -182,11 +221,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touch:UITouch = touches.first! as UITouch
         let positionInScene = touch.location(in: self.view)
         print(touch.location(in: self.view))
-        if positionInScene.x < -20
+        if positionInScene.x < 200
         {
             player.position.x -= 10;
         }
-        else if positionInScene.x > 20
+        else if positionInScene.x > 300
         {
              player.position.x += 10;
         }else
